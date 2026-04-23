@@ -8,8 +8,10 @@ function App() {
   const searchMovies = async () => {
     if (!query) return;
 
-    const res = await fetch(`http://localhost:3000/search?q=${query}`);
+    const res = await fetch(`https://www.omdbapi.com/?apikey=32137688&s=${query}`
+);
     const data = await res.json();
+setMovies(data.Search || []);
 
     if (data.Search) {
       setMovies(data.Search);
